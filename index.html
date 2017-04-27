@@ -1,0 +1,601 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>AngularNative</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/moon.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1><span class="warning eng">Angular Native</span></h1>
+            <h3>Пару слов о чем-то новом...</h3>
+            <p>
+                Юрий Лучанинов / <a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
+            </p>
+            <p>
+                <small><a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a></small>
+            </p>
+        </section>
+        <section>
+            <h2><span class="notify">и о реальной жизни</span></h2>
+        </section>
+
+        <!--что это-->
+
+        <section>
+            <h2>Из чего состоит...</h2>
+            <div>
+                <img width="250" height="250" data-src="imgs/angular.png" alt=""
+                     class="noborder vertical-block fragment">
+                <span class="custom-letter vertical-block">+</span>
+                <img width="250" height="250" data-src="imgs/nativescript.jpg" alt=""
+                     class="noborder vertical-block fragment">
+                <span class="custom-letter vertical-block">=</span>
+                <img width="272" height="300" data-src="imgs/angularnative.png" alt="" class="noborder vertical-block">
+            </div>
+        </section>
+
+        <section>
+            <h2>Что такое <span class="eng">NativeScript?</span></h2>
+            <h3><span class="notify">Идея: Пишем нативные приложения на <span class="eng">JS</span></span></h3>
+            <div style="position:relative">
+                <p class="fragment fade-in"
+                   style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                   data-fragment-index="0">
+                    <span class="green">Или: </span><span class="warning">100% нативная производительность?</span>
+                </p>
+                <p class="fragment fade-out"
+                   style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                   data-fragment-index="0">
+                    <span class="green">Цель: </span>Доступ к 100% нативного функционала.
+                </p>
+            </div>
+        </section>
+
+
+        <section>
+            <h2><span class="eng">100%</span> нативной функциональности</h2>
+        </section>
+        <section>
+            <h3>Как это работает <span class="eng">?</span></h3>
+            <img width="600" height="530" data-src="imgs/what-is-hybrid.png" alt="" class="noborder">
+        </section>
+        <section>
+            <h3>Как это работает <span class="eng">?</span></h3>
+            <div style="position:relative; height: 750px">
+                <img width="700" height="540"
+                     data-fragment-index="0"
+                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                     data-src="imgs/ios.png" alt="" class="fragment fade-in noborder">
+                <img width="700" height="540"
+                     data-fragment-index="0"
+                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                     data-src="imgs/android.png" alt="" class="fragment fade-out noborder">
+            </div>
+        </section>
+        <section>
+            <h3>Как это работает <span class="eng">?</span></h3>
+            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
+var file = new java.io.File(path);
+            </code></pre>
+            <ul style="font-size: 32px;">
+                <li>Виртуальная машина выполняет JavaScript код</li>
+                <li>Биндингом определяются соответствующие методы вызова с нативной стороны</li>
+                <li>"Сервис передачи" преобразует строку JavaScript в объект java.lang.String</li>
+                <li>Результатом вызова функции будет кастомный объект JavaScript,
+                    служащий в качестве прокси для нативного объекта java.io.File,
+                    созданного на стороне Андроида. Когда метод вызван для этого прокси,
+                    он делегируется лежащему в основе инстансу нативного объекта.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Как это выглядит в коде <span class="eng">?</span></h3>
+            <div>Пример из документации:</div>
+            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
+// iOS
+var array = new NSMutableArray();
+array.addObject(new NSObject());
+
+// Android
+var context = ...;
+var button = new android.widget.Button(context);
+// "My Button" is converted to java.lang.String
+button.setText("My Button");
+            </code></pre>
+        </section>
+        <section>
+            <h3>Как это выглядит в коде <span class="eng">?</span></h3>
+            <div>Пример из жизни:</div>
+            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
+var listView = this.page.getViewById("list_view");
+listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
+    // disable select colors if it iOS
+    if (args.ios) {
+        args.ios.selectionStyle =
+                UITableViewCellSelectionStyle.UITableViewCellSelectStyleNone;
+    }
+});</code></pre>
+        </section>
+        <section>
+            <h2><span class="blue">А в чем отличие <br>от Ангуляра <span class="eng">2 ?</span></span></h2>
+            <h2 class="fragment"><span>а ни в чем...</span></h2>
+        </section>
+        <section>
+            <h3>Кроме:</h3>
+            <img width="650" height="410" data-src="imgs/mobile_layout.png" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>И волшебные постфиксы...</h3>
+            <ul>
+                <li><span class="blue">*.</span><span class="warning">android</span><span class="blue">.*</span></li>
+                <li><span class="blue">*.</span><span class="warning">ios</span><span class="blue">.*</span></li>
+                <li class="fragment"><span class="blue">*-</span><span class="warning">common</span><span class="blue">.*</span></li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="eng">100%</span> нативного перформанса</h3>
+            <h5><span class="notify">Last update: March.2016</span></h5>
+            <h5><span class="green">Requires: iOS 8+ device(iPhone 5s)</span></h5>
+            <ul>
+                <li>Native - Xcode 6.3.2</li>
+                <li>NativeScript - NativeScript for iOS 1.6.0</li>
+                <li>Xamarin - Xamarin Studio 5.10.2</li>
+                <li>Appcelerator - Appcelerator CLI 4.1.0</li>
+                <li>Cordova - Apache Cordova 5.1.1</li>
+                <li>React Native - 0.19</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Время запуска</h3>
+            <div class="green">Пустое приложение с одной кнопкой.</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Run 1</th>
+                    <th>Run 2</th>
+                    <th>Run 3</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Native</td>
+                    <td>111ms</td>
+                    <td>105ms</td>
+                    <td>108ms</td>
+                </tr>
+                <tr>
+                    <td>React Native</td>
+                    <td>358ms</td>
+                    <td>361ms</td>
+                    <td>353ms</td>
+                </tr>
+                <tr>
+                    <td>Xamarin Forms</td>
+                    <td>484ms</td>
+                    <td>471ms</td>
+                    <td>469ms</td>
+                </tr>
+                <tr>
+                    <td>Cordova</td>
+                    <td>613ms</td>
+                    <td>612ms</td>
+                    <td>609ms</td>
+                </tr>
+                <tr>
+                    <td><span class="blue">NativeScript</span></td>
+                    <td><span class="blue">674ms</span></td>
+                    <td><span class="blue">672ms</span></td>
+                    <td><span class="blue">670ms</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>Примитивы</h3>
+            <div class="green">Передача чисел от JavaScript к нативной части.
+                Данные приведены для 1 000 000 вызовов нативного кода.</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Run 1</th>
+                    <th>Run 2</th>
+                    <th>Run 3</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Native</td>
+                    <td>5ms</td>
+                    <td>4ms</td>
+                    <td>4ms</td>
+                </tr>
+                <tr>
+                    <td>Xamarin</td>
+                    <td>27ms</td>
+                    <td>27ms</td>
+                    <td>28ms</td>
+                </tr>
+                <tr>
+                    <td><span class="blue">NativeScript</span></td>
+                    <td><span class="blue">989ms</span></td>
+                    <td><span class="blue">998ms</span></td>
+                    <td><span class="blue">980ms</span></td>
+                </tr>
+                <tr>
+                    <td>Appcelerator</td>
+                    <td>34444ms</td>
+                    <td>33969ms</td>
+                    <td>35916ms</td>
+                </tr>
+                <tr>
+                    <td>React Native</td>
+                    <td>130600ms</td>
+                    <td>125140ms</td>
+                    <td>127220ms</td>
+                </tr>
+                <tr>
+                    <td>Cordova</td>
+                    <td>351420ms</td>
+                    <td>357940ms</td>
+                    <td>356740ms</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>Строки</h3>
+            <div class="green">Передача строк от JavaScript к нативной части.
+                Данные приведены для 1 000 000 вызовов нативного кода.</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Run 1</th>
+                    <th>Run 2</th>
+                    <th>Run 3</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Native</td>
+                    <td>42ms</td>
+                    <td>42ms</td>
+                    <td>42ms</td>
+                </tr>
+                <tr>
+                    <td>Xamarin</td>
+                    <td>248ms</td>
+                    <td>234ms</td>
+                    <td>244ms</td>
+                </tr>
+                <tr>
+                    <td><span class="blue">NativeScript</span></td>
+                    <td><span class="blue">415ms</span></td>
+                    <td><span class="blue">444ms</span></td>
+                    <td><span class="blue">418ms</span></td>
+                </tr>
+                <tr>
+                    <td>Appcelerator</td>
+                    <td>3215ms</td>
+                    <td>3198ms</td>
+                    <td>3180ms</td>
+                </tr>
+                <tr>
+                    <td>React Native</td>
+                    <td>12358ms</td>
+                    <td>12464ms</td>
+                    <td>12547ms</td>
+                </tr>
+                <tr>
+                    <td>Cordova</td>
+                    <td>36864ms</td>
+                    <td>36063ms</td>
+                    <td>35861ms</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>Большие объёмы данных</h3>
+            <div class="green">Передача массива из 65 536 элементов от JavaScript к нативной части.
+                Данные приведены для 200 вызовов нативного кода.</div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platform</th>
+                    <th>Run 1</th>
+                    <th>Run 2</th>
+                    <th>Run 3</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Native</td>
+                    <td>768ms</td>
+                    <td>774ms</td>
+                    <td>759ms</td>
+                </tr>
+                <tr>
+                    <td><span class="blue">NativeScript</span></td>
+                    <td><span class="blue">1135ms</span></td>
+                    <td><span class="blue">1129ms</span></td>
+                    <td><span class="blue">1138ms</span></td>
+                </tr>
+                <tr>
+                    <td>Xamarin</td>
+                    <td>3763ms</td>
+                    <td>3906ms</td>
+                    <td>3789ms</td>
+                </tr>
+                <tr>
+                    <td>Cordova</td>
+                    <td>9655ms</td>
+                    <td>9714ms</td>
+                    <td>9730ms</td>
+                </tr>
+                <tr>
+                    <td>React Native</td>
+                    <td>47873ms</td>
+                    <td>47695ms</td>
+                    <td>47859ms</td>
+                </tr>
+                <tr>
+                    <td>Appcelerator</td>
+                    <td>50091ms</td>
+                    <td>45149ms</td>
+                    <td>47927ms</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <div style="position:relative; height: 750px">
+                <h3>Вся правда о нативной производительности</h3>
+                <p class="fragment fade-in"
+                   style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                   data-fragment-index="0">
+                    <span class="warning" style="font-size: 84px; line-height: 350px;">Все тесты ВРУТ!</span>
+                </p>
+                <img width="700" height="462" data-src="imgs/lie.jpg" alt=""
+                     class="noborder vertical-block fragment fade-out"
+                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                     data-fragment-index="0">
+            </div>
+        </section>
+        <section>
+            <h3>Сила, брат, в</h3>
+            <h3><span class="warning">потоках <span class="eng">!</span></span></h3>
+            <img width="300" height="300" data-src="imgs/thread.png" alt="" class="noborder">
+        </section>
+        <section>
+            <h3>ReactNative</h3>
+            <img width="700" height="430" data-src="imgs/react_native.png" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>AngularNative</h3>
+            <img width="700" height="380" data-src="imgs/ww.jpg" alt="" class="noborder vertical-block">
+        </section>
+
+        <!--несколько приятных мелочей-->
+        <section>
+            <h2>Несколько приятных мелочей</h2>
+        </section>
+        <section>
+            <h3>Шаринг кода</h3>
+            <img width="640" height="348" data-src="imgs/share_0.png" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>Шаринг кода</h3>
+            <img width="700" height="380" data-src="imgs/share.gif" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>Шаринг кода</h3>
+            <img width="480" height="366" data-src="imgs/desktop.gif" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>https://github.com/NathanWalker/angular-seed-advanced</h3>
+            <img width="360" height="360" data-src="imgs/qr-seed.gif" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>ES6</h3>
+            <div>В общем и целом, NativeScript использует последние стабильные релизные версии V8 и JavaScriptCore.
+                Поэтому поддержка языка ECMAScript в NativeScript для iOS практически идентична поддержке для
+                десктопного Safari, а поддержка в NativeScript для Android – для десктопного Chrome.</div>
+        </section>
+        <section>
+            <h3>Переделываем гибридные приложения в нативные с помощью <span class="eng">NativeScript</span></h3>
+            <img width="360" height="360" data-src="imgs/qr-native.gif" alt="" class="noborder vertical-block">
+        </section>
+        <section>
+            <h3>И еще много чего...</h3>
+            <ul>
+                <li class="fragment">Расширение существующих нативных приложений</li>
+                <li class="fragment">Нативные модули на С++ аналогичны адд-онам Node.js</li>
+                <li class="fragment">Node.JS API к концу года</li>
+                <li class="fragment">Работа с Андроид-виджетами</li>
+                <li class="fragment">Тесты с Mocha.js, Appium и т.д.</li>
+                <li class="fragment">Universal Windows Platform</li>
+                <li class="fragment">Telerik App Builder</li>
+                <li class="fragment">WebInspector & NodeInspector for debugging</li>
+                <li class="fragment">Default Themes</li>
+                <li class="fragment">v.2.4</li>
+            </ul>
+        </section>
+        <!--реальность использования-->
+        <section>
+            <h2><span class="warning">Но в реальной жизни...</span></h2>
+            <h3><span class="notify">просто неделя проекта</span></h3>
+        </section>
+        <section>
+            <h3><span class="eng">QA:</span> <span class="green">Отзывы</span></h3>
+            <ul class="list-style">
+                <li><span class="warning">-&#x9;Ломается практически любая кнопка, если успеть нажать на "back" на Андроид-девайсе в момент анимации.</span>
+                </li>
+                <li><span class="notify">+&#x9;Список из 3000 объектов резво крутится ;-)</span></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Разработчики: <span class="warning">Трудности</span></h3>
+            <ul>
+                <li>CLI: Не всегда с первого раза запускается эмулятор.</li>
+                <li>При составлении структуры компонента из стандартных шаблонов разметки периодически
+                    выбрасывает из эмулятора, либо просто выдаёт белый экран. Очень тяжело определить
+                    причину такого поведения.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Разработчики: <span class="warning">Трудности</span></h3>
+            <ul>
+                <li>Нет стабильного инспектора для livesync, нет возможности смотреть разметку.</li>
+                <li>Нет возможности использования стандартных html-элементов разметки. Стилизация
+                    готовых шаблонов затрудняется невозможностью увидеть их базовые CSS-свойства.
+                    Соответственно, иногда не получается перебить некоторые свойства.
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Разработчики: <span class="notify">Понравилось</span></h3>
+            <ul>
+                <li>CLI.</li>
+                <li>Наличие готовых анимаций.</li>
+                <li>Наличие готовых универсальных элементов разметки, которые по разному отрисовываются
+                    в зависимости от платформы (т.е., один код для всех платформ).
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Разработчики: <span class="notify">Понравилось</span></h3>
+            <ul>
+                <li>Довольно удобные layout containers. Можно быстро "набросать" простой дизайн.</li>
+                <li>Есть возможность разработки сразу под две платформы – разделение и автоматический
+                    выбор файлов (темплейтов, CSS) .android и .ios, в зависимости от билда.
+                </li>
+                <li>Связка Angular 2 + RxJS как гибкое средство для асинхронных операций.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Разработчики: <span class="warning">Не понравилось</span></h3>
+            <ul>
+                <li>Менее удобно, чем веб-разработка.</li>
+                <li>Затруднена стилизация при наличии собственного дизайна.</li>
+                <li>Появление ошибок при нестыковке некоторых шаблонов разметки между собой.</li>
+                <li>Для быстрой и качественной разработки необходимо знать тонкости Angular 2 и нативной платформы.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Стороннее мнение:</h3>
+            <ul>
+                <li class="fragment">Почему демки плохие?</li>
+                <li class="fragment">Сплэш-скрин?</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Реальный кейс: было</h3>
+            <img width="340" height="600" data-src="imgs/first_try_1.png" alt=""
+                 class="noborder vertical-block">
+            <img width="340" height="600" data-src="imgs/first_try_2.png" alt=""
+                 class="noborder vertical-block">
+
+        </section>
+        <section style="top: 0 !important;"
+                data-background-video="video/nativescript.mp4"
+                data-background-video-loop>
+            <h3><span class="green">Реальный кейс: стало</span></h3>
+        </section>
+        <section>
+            <h3>Выводы:</h3>
+            <ul>
+                <li class="fragment"><span class="green">Product Ready</span></li>
+                <li class="fragment">Помните – это <span class="red">другие платформы</span>, Вам придется <span class="red">изучить их специфику!</span></li>
+                <li class="fragment"><span class="blue">Асинхронность != потоки</span>, используйте Web Workers.</li>
+                <li class="fragment">Не забывайте следить за официальными багами!</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Несколько полезных ссылок</h3>
+            <ul style="font-size: 24px">
+                <li><a href="http://www.nativescript.org/">http://www.nativescript.org/</a></li>
+                <li><a href="http://docs.nativescript.org/angular/start/introduction.html">http://docs.nativescript.org/angular/start/introduction.html</a>
+                </li>
+                <li><a href="http://www.hybridtonative.com/">http://www.hybridtonative.com/</a></li>
+                <li><a href="http://nativescript.github.io/developer-day-workshop/">http://nativescript.github.io/developer-day-workshop/</a>
+                </li>
+                <li><a href="http://www.nativescript.org/ctos-guide">http://www.nativescript.org/ctos-guide</a></li>
+                <li><a href="http://developer.telerik.com/featured/nativescript-a-technical-overview/">http://developer.telerik.com/featured/nativescript-a-technical-overview/</a>
+                </li>
+                <li><a href="http://developer.telerik.com/featured/nativescript-works/">http://developer.telerik.com/featured/nativescript-works/</a>
+                </li>
+                <li><a href="http://developer.telerik.com/featured/nativescript-android/">http://developer.telerik.com/featured/nativescript-android/</a>
+                </li>
+                <li><a href="http://github.com/NativeScript/sample-iOS-Profiling/tree/performance-tests">http://github.com/NativeScript/sample-iOS-Profiling/tree/performance-tests</a>
+                </li>
+                <li><a href="http://developer.telerik.com/featured/benefits-single-threading-model-nativescript/">http://developer.telerik.com/featured/benefits-single-threading-model-nativescript/</a>
+                </li>
+                <li>
+                    <a href="http://www.quora.com/What-are-the-key-difference-between-ReactNative-and-NativeScript/answer/Valentin-Stoychev">http://www.quora.com/What-are-the-key-difference-between-ReactNative-and-NativeScript/answer/Valentin-Stoychev</a>
+                </li>
+                <li><a href="http://github.com/NativeScript/NativeScript/issues/1563">http://github.com/NativeScript/NativeScript/issues/1563</a>
+                </li>
+                <li>
+                    <a href="http://medium.com/@enchev/extend-your-existing-android-app-with-angular-2-and-nativescript-56a4e1c72d6">http://medium.com/@enchev/extend-your-existing-android-app-with-angular-2-and-nativescript-56a4e1c72d6</a>
+                </li>
+                <li>
+                    <a href="http://github.com/NativeScript/docs/blob/master/publishing/creating-launch-screens-android.md">http://github.com/NativeScript/docs/blob/master/publishing/creating-launch-screens-android.md</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3><span class="blue">Вчера...</span></h3>
+            <img width="700" height="500" data-src="imgs/challenge.png" alt="" class="noborder">
+        </section>
+        <section>
+            <h1><span class="blue">Успехов, Вопросы <span class="eng">?</span></span></h1>
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

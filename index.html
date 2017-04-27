@@ -25,24 +25,26 @@
 <body>
 <div class="reveal">
     <div class="slides">
+        <section data-background="images/angular_native.png">
+        </section>
         <section>
             <h1><span class="warning eng">Angular Native</span></h1>
-            <h3>Пару слов о чем-то новом...</h3>
+            <h3>A couple of words about something "new"...</h3>
             <p>
-                Юрий Лучанинов / <a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
+                Iurii Luchaninov / <a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
             </p>
             <p>
                 <small><a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a></small>
             </p>
         </section>
         <section>
-            <h2><span class="notify">и о реальной жизни</span></h2>
+            <h2><span class="notify">...and about real life</span></h2>
         </section>
 
         <!--что это-->
 
         <section>
-            <h2>Из чего состоит...</h2>
+            <h2>What is NativeScript made of?</h2>
             <div>
                 <img width="250" height="250" data-src="imgs/angular.png" alt=""
                      class="noborder vertical-block fragment">
@@ -55,61 +57,61 @@
         </section>
 
         <section>
-            <h2>Что такое <span class="eng">NativeScript?</span></h2>
-            <h3><span class="notify">Идея: Пишем нативные приложения на <span class="eng">JS</span></span></h3>
+            <h2>What is NativeScript?</h2>
+            <h3><span class="notify">Idea: write native apps with JS</span></h3>
             <div style="position:relative">
                 <p class="fragment fade-in"
                    style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
                    data-fragment-index="0">
-                    <span class="green">Или: </span><span class="warning">100% нативная производительность?</span>
+                    <span class="green">Or: </span><span class="warning">100% native performance?</span>
                 </p>
                 <p class="fragment fade-out"
                    style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
                    data-fragment-index="0">
-                    <span class="green">Цель: </span>Доступ к 100% нативного функционала.
+                    <span class="green">Goal: </span>Access to 100% native functionality
                 </p>
             </div>
         </section>
 
 
         <section>
-            <h2><span class="eng">100%</span> нативной функциональности</h2>
+            <h2>100% native functionality</h2>
         </section>
         <section>
-            <h3>Как это работает <span class="eng">?</span></h3>
-            <img width="600" height="530" data-src="imgs/what-is-hybrid.png" alt="" class="noborder">
+            <h3>How does it work?</h3>
+            <img width="600" height="530" data-src="images/what-is-hybrid.png" alt="" class="noborder">
         </section>
         <section>
-            <h3>Как это работает <span class="eng">?</span></h3>
+            <h3>How does it work?</h3>
             <div style="position:relative; height: 750px">
                 <img width="700" height="540"
                      data-fragment-index="0"
                      style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
-                     data-src="imgs/ios.png" alt="" class="fragment fade-in noborder">
+                     data-src="images/ios_os.png" alt="" class="fragment fade-in noborder">
                 <img width="700" height="540"
                      data-fragment-index="0"
                      style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
-                     data-src="imgs/android.png" alt="" class="fragment fade-out noborder">
+                     data-src="images/android-os.png" alt="" class="fragment fade-out noborder">
             </div>
         </section>
         <section>
-            <h3>Как это работает <span class="eng">?</span></h3>
+            <h3>How does it work?</h3>
             <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
 var file = new java.io.File(path);
             </code></pre>
             <ul style="font-size: 32px;">
-                <li>Виртуальная машина выполняет JavaScript код</li>
-                <li>Биндингом определяются соответствующие методы вызова с нативной стороны</li>
-                <li>"Сервис передачи" преобразует строку JavaScript в объект java.lang.String</li>
-                <li>Результатом вызова функции будет кастомный объект JavaScript,
-                    служащий в качестве прокси для нативного объекта java.io.File,
-                    созданного на стороне Андроида. Когда метод вызван для этого прокси,
-                    он делегируется лежащему в основе инстансу нативного объекта.</li>
+                <li>Virtual machine executes JavaScript code.</li>
+                <li>Binding defines corresponding native call methods.</li>
+                <li>Marshaling is performed between JavaScript string and the java.lang.String object</li>
+                <li>The result of the function call is a custom JavaScript object,
+                    which serves as a proxy for a native java.io.File object,
+                    created on the Android side. When a method is called for this proxy,
+                    it is delegated to the underlying native object instance.</li>
             </ul>
         </section>
         <section>
-            <h3>Как это выглядит в коде <span class="eng">?</span></h3>
-            <div>Пример из документации:</div>
+            <h3>What does it look like in the code?</h3>
+            <div>Example from documentation:</div>
             <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
 // iOS
 var array = new NSMutableArray();
@@ -123,8 +125,8 @@ button.setText("My Button");
             </code></pre>
         </section>
         <section>
-            <h3>Как это выглядит в коде <span class="eng">?</span></h3>
-            <div>Пример из жизни:</div>
+            <h3>What does it look like in the code?</h3>
+            <div>Example from real life:</div>
             <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
 var listView = this.page.getViewById("list_view");
 listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
@@ -136,15 +138,15 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
 });</code></pre>
         </section>
         <section>
-            <h2><span class="blue">А в чем отличие <br>от Ангуляра <span class="eng">2 ?</span></span></h2>
-            <h2 class="fragment"><span>а ни в чем...</span></h2>
+            <h2><span class="blue">What's the difference from Angular ?</span></span></h2>
+            <h2 class="fragment"><span>There is none...</span></h2>
         </section>
         <section>
-            <h3>Кроме:</h3>
+            <h3>Except:</h3>
             <img width="650" height="410" data-src="imgs/mobile_layout.png" alt="" class="noborder vertical-block">
         </section>
         <section>
-            <h3>И волшебные постфиксы...</h3>
+            <h3>And the magical postfixes...</h3>
             <ul>
                 <li><span class="blue">*.</span><span class="warning">android</span><span class="blue">.*</span></li>
                 <li><span class="blue">*.</span><span class="warning">ios</span><span class="blue">.*</span></li>
@@ -152,7 +154,7 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </ul>
         </section>
         <section>
-            <h3><span class="eng">100%</span> нативного перформанса</h3>
+            <h3>100% native performance</h3>
             <h5><span class="notify">Last update: March.2016</span></h5>
             <h5><span class="green">Requires: iOS 8+ device(iPhone 5s)</span></h5>
             <ul>
@@ -165,8 +167,8 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </ul>
         </section>
         <section>
-            <h3>Время запуска</h3>
-            <div class="green">Пустое приложение с одной кнопкой.</div>
+            <h3>Launch time</h3>
+            <div class="green">Blank app with a single button.</div>
             <table>
                 <thead>
                 <tr>
@@ -211,9 +213,9 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </table>
         </section>
         <section>
-            <h3>Примитивы</h3>
-            <div class="green">Передача чисел от JavaScript к нативной части.
-                Данные приведены для 1 000 000 вызовов нативного кода.</div>
+            <h3>Primitives</h3>
+            <div class="green">Marshaling between JavaScript and native part.
+                The data is presented for 1 000 000 native code calls.</div>
             <table>
                 <thead>
                 <tr>
@@ -264,9 +266,9 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </table>
         </section>
         <section>
-            <h3>Строки</h3>
-            <div class="green">Передача строк от JavaScript к нативной части.
-                Данные приведены для 1 000 000 вызовов нативного кода.</div>
+            <h3>Strings</h3>
+            <div class="green">Marshaling between JavaScript and native part.
+                The data is presented for 1 000 000 native code calls.</div>
             <table>
                 <thead>
                 <tr>
@@ -317,9 +319,10 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </table>
         </section>
         <section>
-            <h3>Большие объёмы данных</h3>
-            <div class="green">Передача массива из 65 536 элементов от JavaScript к нативной части.
-                Данные приведены для 200 вызовов нативного кода.</div>
+            <h3>Big Data</h3>
+            <div class="green">Marshaling of an array of 65 536 elements between
+                JavaScript and native part. The data is presented for 200 native code calls.
+            </div>
             <table>
                 <thead>
                 <tr>
@@ -371,11 +374,11 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
         </section>
         <section>
             <div style="position:relative; height: 750px">
-                <h3>Вся правда о нативной производительности</h3>
+                <h3>The truth about native performance</h3>
                 <p class="fragment fade-in"
                    style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
                    data-fragment-index="0">
-                    <span class="warning" style="font-size: 84px; line-height: 350px;">Все тесты ВРУТ!</span>
+                    <span class="warning" style="font-size: 84px; line-height: 350px;">All tests LIE!</span>
                 </p>
                 <img width="700" height="462" data-src="imgs/lie.jpg" alt=""
                      class="noborder vertical-block fragment fade-out"
@@ -384,33 +387,33 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </div>
         </section>
         <section>
-            <h3>Сила, брат, в</h3>
-            <h3><span class="warning">потоках <span class="eng">!</span></span></h3>
-            <img width="300" height="300" data-src="imgs/thread.png" alt="" class="noborder">
+            <h3>The strength</h3>
+            <h3><span class="warning">in the Threads!</span></h3>
+            <img width="300" height="300" data-src="images/thread.png" alt="" class="noborder">
         </section>
         <section>
             <h3>ReactNative</h3>
-            <img width="700" height="430" data-src="imgs/react_native.png" alt="" class="noborder vertical-block">
+            <img width="700" height="430" data-src="images/react_native.png" alt="" class="noborder vertical-block">
         </section>
         <section>
             <h3>AngularNative</h3>
-            <img width="700" height="380" data-src="imgs/ww.jpg" alt="" class="noborder vertical-block">
+            <img width="700" height="380" data-src="images/ww.png" alt="" class="noborder vertical-block">
         </section>
 
         <!--несколько приятных мелочей-->
         <section>
-            <h2>Несколько приятных мелочей</h2>
+            <h2>A couple of nice things</h2>
         </section>
         <section>
-            <h3>Шаринг кода</h3>
-            <img width="640" height="348" data-src="imgs/share_0.png" alt="" class="noborder vertical-block">
+            <h3>Code sharing</h3>
+            <img width="640" height="348" data-src="images/share_0.png" alt="" class="noborder vertical-block">
         </section>
         <section>
-            <h3>Шаринг кода</h3>
+            <h3>Code sharing</h3>
             <img width="700" height="380" data-src="imgs/share.gif" alt="" class="noborder vertical-block">
         </section>
         <section>
-            <h3>Шаринг кода</h3>
+            <h3>Code sharing</h3>
             <img width="480" height="366" data-src="imgs/desktop.gif" alt="" class="noborder vertical-block">
         </section>
         <section>
@@ -419,99 +422,104 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
         </section>
         <section>
             <h3>ES6</h3>
-            <div>В общем и целом, NativeScript использует последние стабильные релизные версии V8 и JavaScriptCore.
-                Поэтому поддержка языка ECMAScript в NativeScript для iOS практически идентична поддержке для
-                десктопного Safari, а поддержка в NativeScript для Android – для десктопного Chrome.</div>
+            <div>Generally speaking, NativeScript uses the latest stable releases of V8
+                and JavaScriptCore. That is why support for the ECMAScript language in
+                NativeScript for iOS is similar to support for desktop Safari, and support
+                in NativeScript for Android is similar to support is similar to support
+                for desktop Chrome.
+            </div>
         </section>
         <section>
-            <h3>Переделываем гибридные приложения в нативные с помощью <span class="eng">NativeScript</span></h3>
+            <h3>Upgrading hybrid apps to natives with NativeScript</h3>
             <img width="360" height="360" data-src="imgs/qr-native.gif" alt="" class="noborder vertical-block">
         </section>
         <section>
-            <h3>И еще много чего...</h3>
+            <h3>And a lot of other things....</h3>
             <ul>
-                <li class="fragment">Расширение существующих нативных приложений</li>
-                <li class="fragment">Нативные модули на С++ аналогичны адд-онам Node.js</li>
-                <li class="fragment">Node.JS API к концу года</li>
-                <li class="fragment">Работа с Андроид-виджетами</li>
-                <li class="fragment">Тесты с Mocha.js, Appium и т.д.</li>
+                <li class="fragment">Extension of existing native apps</li>
+                <li class="fragment">Work with Android widgets</li>
+                <li class="fragment">Tests with Mocha.js, Appium, etc.</li>
                 <li class="fragment">Universal Windows Platform</li>
                 <li class="fragment">Telerik App Builder</li>
                 <li class="fragment">WebInspector & NodeInspector for debugging</li>
                 <li class="fragment">Default Themes</li>
-                <li class="fragment">v.2.4</li>
+                <li class="fragment">v.3</li>
             </ul>
         </section>
         <!--реальность использования-->
         <section>
-            <h2><span class="warning">Но в реальной жизни...</span></h2>
-            <h3><span class="notify">просто неделя проекта</span></h3>
+            <h2><span class="warning">But in real life...</span></h2>
+            <h3><span class="notify">Just a start week of a project</span></h3>
         </section>
         <section>
-            <h3><span class="eng">QA:</span> <span class="green">Отзывы</span></h3>
+            <h3><span class="eng">QA:</span> <span class="green">Feedback</span></h3>
             <ul class="list-style">
-                <li><span class="warning">-&#x9;Ломается практически любая кнопка, если успеть нажать на "back" на Андроид-девайсе в момент анимации.</span>
+                <li><span class="warning">-&#x9;Almost every animation malfunctions if you manage to tap "back" on an Android device during an animation.</span>
                 </li>
-                <li><span class="notify">+&#x9;Список из 3000 объектов резво крутится ;-)</span></li>
+                <li><span class="notify">+&#x9;A list of 3000 objects scrolls nicely! ;-)</span></li>
             </ul>
         </section>
         <section>
-            <h3>Разработчики: <span class="warning">Трудности</span></h3>
+            <h3>Developers: <span class="warning">Difficulties</span></h3>
             <ul>
-                <li>CLI: Не всегда с первого раза запускается эмулятор.</li>
-                <li>При составлении структуры компонента из стандартных шаблонов разметки периодически
-                    выбрасывает из эмулятора, либо просто выдаёт белый экран. Очень тяжело определить
-                    причину такого поведения.</li>
-            </ul>
-        </section>
-        <section>
-            <h3>Разработчики: <span class="warning">Трудности</span></h3>
-            <ul>
-                <li>Нет стабильного инспектора для livesync, нет возможности смотреть разметку.</li>
-                <li>Нет возможности использования стандартных html-элементов разметки. Стилизация
-                    готовых шаблонов затрудняется невозможностью увидеть их базовые CSS-свойства.
-                    Соответственно, иногда не получается перебить некоторые свойства.
+                <li>CLI: emulator doesn't always launch on the first try.</li>
+                <li>When creating a component structure from standard layout templates,
+                    the emulator sometimes crashes, or just a blank screen is shown.
+                    It is very hard to define the cause of this behavior.
                 </li>
             </ul>
         </section>
         <section>
-            <h3>Разработчики: <span class="notify">Понравилось</span></h3>
+            <h3>Developers: <span class="warning">Difficulties</span></h3>
+            <ul>
+                <li>There is no stable inspector for livesync, no opportunity to see the layout.</li>
+                <li>There is no opportunity to use standard html elements of layouting.
+                    Stylization of ready templates becomes more difficult because it's
+                    impossible to check their basic CSS options. Therefore, sometimes some
+                    of the options cannot be modified.
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Developers: <span class="notify">What they liked</span></h3>
             <ul>
                 <li>CLI.</li>
-                <li>Наличие готовых анимаций.</li>
-                <li>Наличие готовых универсальных элементов разметки, которые по разному отрисовываются
-                    в зависимости от платформы (т.е., один код для всех платформ).
+                <li>Off-the-shelf animations.</li>
+                <li>Off-the-shelf layout elements, which are rendered differently,
+                    depending on the platform (e.g. the same code for all platforms).
                 </li>
             </ul>
         </section>
         <section>
-            <h3>Разработчики: <span class="notify">Понравилось</span></h3>
+            <h3>Developers: <span class="notify">What they liked</span></h3>
             <ul>
-                <li>Довольно удобные layout containers. Можно быстро "набросать" простой дизайн.</li>
-                <li>Есть возможность разработки сразу под две платформы – разделение и автоматический
-                    выбор файлов (темплейтов, CSS) .android и .ios, в зависимости от билда.
+                <li>Convenient layout containers. You can quickly make up a simple design.
                 </li>
-                <li>Связка Angular 2 + RxJS как гибкое средство для асинхронных операций.</li>
+                <li>It is possible to develop for two platforms at the same time – division
+                    and automated selection of files (templates, CSS) .android and .ios,
+                    depending on the build.
+                </li>
+                <li>Angular + RxJS as a flexible means to asynchronous operations.</li>
             </ul>
         </section>
         <section>
-            <h3>Разработчики: <span class="warning">Не понравилось</span></h3>
+            <h3>Developers: <span class="warning">What they disliked</span></h3>
             <ul>
-                <li>Менее удобно, чем веб-разработка.</li>
-                <li>Затруднена стилизация при наличии собственного дизайна.</li>
-                <li>Появление ошибок при нестыковке некоторых шаблонов разметки между собой.</li>
-                <li>Для быстрой и качественной разработки необходимо знать тонкости Angular 2 и нативной платформы.</li>
+                <li>Less convenient than Web development.</li>
+                <li>Difficult stylization, if a custom design is used.</li>
+                <li>Errors, if several layout templates mismatch.</li>
+                <li>For quick and effective development it is necessary to know the specifics of Angular and the native platform.</li>
             </ul>
         </section>
         <section>
-            <h3>Стороннее мнение:</h3>
+            <h3>An outside opinion:</h3>
             <ul>
-                <li class="fragment">Почему демки плохие?</li>
-                <li class="fragment">Сплэш-скрин?</li>
+                <li class="fragment">Why are the demos so bad?</li>
+                <li class="fragment">Splashscreen?</li>
             </ul>
         </section>
         <section>
-            <h3>Реальный кейс: было</h3>
+            <h3>Real case: before</h3>
             <img width="340" height="600" data-src="imgs/first_try_1.png" alt=""
                  class="noborder vertical-block">
             <img width="340" height="600" data-src="imgs/first_try_2.png" alt=""
@@ -521,19 +529,19 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
         <section style="top: 0 !important;"
                 data-background-video="video/nativescript.mp4"
                 data-background-video-loop>
-            <h3><span class="green">Реальный кейс: стало</span></h3>
+            <h3><span class="green">Real case: after</span></h3>
         </section>
         <section>
-            <h3>Выводы:</h3>
+            <h3>Conclusions:</h3>
             <ul>
                 <li class="fragment"><span class="green">Product Ready</span></li>
-                <li class="fragment">Помните – это <span class="red">другие платформы</span>, Вам придется <span class="red">изучить их специфику!</span></li>
-                <li class="fragment"><span class="blue">Асинхронность != потоки</span>, используйте Web Workers.</li>
-                <li class="fragment">Не забывайте следить за официальными багами!</li>
+                <li class="fragment">Keep in mind - <span class="red">you need to study the specifics of platforms!</span></li>
+                <li class="fragment"><span class="blue">Asynchrony does not equal threads, use Web Workers</li>
+                <li class="fragment">Keep an eye on official issues!</li>
             </ul>
         </section>
         <section>
-            <h3>Несколько полезных ссылок</h3>
+            <h3>Several useful links</h3>
             <ul style="font-size: 24px">
                 <li><a href="http://www.nativescript.org/">http://www.nativescript.org/</a></li>
                 <li><a href="http://docs.nativescript.org/angular/start/introduction.html">http://docs.nativescript.org/angular/start/introduction.html</a>
@@ -566,11 +574,8 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
             </ul>
         </section>
         <section>
-            <h3><span class="blue">Вчера...</span></h3>
-            <img width="700" height="500" data-src="imgs/challenge.png" alt="" class="noborder">
-        </section>
-        <section>
-            <h1><span class="blue">Успехов, Вопросы <span class="eng">?</span></span></h1>
+            <h2><span class="blue">Thank you for your attention.</span></h2>
+            <h2><span class="blue">Any questions?</span></h2>
         </section>
 
     </div>

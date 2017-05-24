@@ -36,7 +36,7 @@ html body .reveal div{
 }
 
 .green {
-    color: #3eae65
+    color: #00c853
 }
 
 .red {
@@ -77,4 +77,12 @@ html body .reveal div{
 
 pre {
     width: 900px;
+}
+
+.reveal table .no-borders td{
+    border-bottom: none;
+}
+
+.reveal pre {
+    box-shadow: none;
 }

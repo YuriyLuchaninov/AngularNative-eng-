@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/theme/moon.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/obsidian.css">
 
     <link rel="stylesheet" href="css/custom.css">
     <!-- Printing and PDF exports -->
@@ -27,15 +27,18 @@
     <div class="slides">
         <section data-background="images/angular_native.png">
         </section>
+
         <section>
             <h1><span class="warning eng">Angular Native</span></h1>
             <h3>A couple of words about something "new"...</h3>
             <p>
-                Yuriy Luchaninov / <a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
+                <span class="green">Yuriy Luchaninov / </span><a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
             </p>
             <p>
-                <small><a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a></small>
+                <a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a>
             </p>
+            <img width="180" height="48" data-src="images/logo.png" alt=""
+                 class="noborder vertical-block">
         </section>
         <section>
             <h2><span class="notify">...and about real life</span></h2>
@@ -79,7 +82,7 @@
         </section>
         <section>
             <h3>How does it work?</h3>
-            <img width="600" height="530" data-src="images/what-is-hybrid.png" alt="" class="noborder">
+            <img width="900" height="400" data-src="images/what-is-hybrid.png" alt="" class="noborder">
         </section>
         <section>
             <h3>How does it work?</h3>
@@ -96,7 +99,7 @@
         </section>
         <section>
             <h3>How does it work?</h3>
-            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
+            <pre><code class="javascript" data-trim style="font-size: 32px; line-height: 36px;">
 var file = new java.io.File(path);
             </code></pre>
             <ul style="font-size: 32px;">
@@ -112,28 +115,33 @@ var file = new java.io.File(path);
         <section>
             <h3>What does it look like in the code?</h3>
             <div>Example from documentation:</div>
-            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
+            <pre><code class="javascript" data-trim style="font-size: 32px; line-height: 36px;">
 // iOS
 var array = new NSMutableArray();
 array.addObject(new NSObject());
 
 // Android
 var context = ...;
-var button = new android.widget.Button(context);
-// "My Button" is converted to java.lang.String
+var button =
+        new android.widget.Button(context);
+// "My Button" is converted
+//          to java.lang.String
 button.setText("My Button");
             </code></pre>
         </section>
         <section>
             <h3>What does it look like in the code?</h3>
             <div>Example from real life:</div>
-            <pre><code class="javascript" data-trim contenteditable style="font-size: 32px; line-height: 36px;">
-var listView = this.page.getViewById("list_view");
-listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
+            <pre><code class="javascript" data-trim style="font-size: 32px; line-height: 36px;">
+var listView =
+        this.page.getViewById("list_view");
+listView.on(ListView.itemLoadingEvent,
+    (args: ItemEventData)=> {
     // disable select colors if it iOS
     if (args.ios) {
         args.ios.selectionStyle =
-                UITableViewCellSelectionStyle.UITableViewCellSelectStyleNone;
+            UITableViewCellSelectionStyle
+                .UITableViewCellSelectStyleNone;
     }
 });</code></pre>
         </section>
@@ -143,7 +151,17 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
         </section>
         <section>
             <h3>Except:</h3>
-            <img width="650" height="410" data-src="imgs/mobile_layout.png" alt="" class="noborder vertical-block">
+<!--            <img width="650" height="410" data-src="imgs/mobile_layout.png" alt="" class="noborder vertical-block">-->
+            <pre><code class="xml" data-trim style="font-size: 24px; line-height: 24px;">
+<ios>
+    <Imаge [src]="itemObject.img_url">
+    </Imаge>
+</ios>
+<android>
+    <FrescoDrawee [imageUri]="itemObject.img_url">
+    </FrescoDrawee>
+</android>
+            </code></pre>
         </section>
         <section>
             <h3>And the magical postfixes...</h3>
@@ -179,31 +197,31 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="no-borders">
                     <td>Native</td>
                     <td>111ms</td>
                     <td>105ms</td>
                     <td>108ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>React Native</td>
                     <td>358ms</td>
                     <td>361ms</td>
                     <td>353ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Xamarin Forms</td>
                     <td>484ms</td>
                     <td>471ms</td>
                     <td>469ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Cordova</td>
                     <td>613ms</td>
                     <td>612ms</td>
                     <td>609ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td><span class="blue">NativeScript</span></td>
                     <td><span class="blue">674ms</span></td>
                     <td><span class="blue">672ms</span></td>
@@ -226,37 +244,37 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="no-borders">
                     <td>Native</td>
                     <td>5ms</td>
                     <td>4ms</td>
                     <td>4ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Xamarin</td>
                     <td>27ms</td>
                     <td>27ms</td>
                     <td>28ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td><span class="blue">NativeScript</span></td>
                     <td><span class="blue">989ms</span></td>
                     <td><span class="blue">998ms</span></td>
                     <td><span class="blue">980ms</span></td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Appcelerator</td>
                     <td>34444ms</td>
                     <td>33969ms</td>
                     <td>35916ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>React Native</td>
                     <td>130600ms</td>
                     <td>125140ms</td>
                     <td>127220ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Cordova</td>
                     <td>351420ms</td>
                     <td>357940ms</td>
@@ -279,37 +297,37 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="no-borders">
                     <td>Native</td>
                     <td>42ms</td>
                     <td>42ms</td>
                     <td>42ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Xamarin</td>
                     <td>248ms</td>
                     <td>234ms</td>
                     <td>244ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td><span class="blue">NativeScript</span></td>
                     <td><span class="blue">415ms</span></td>
                     <td><span class="blue">444ms</span></td>
                     <td><span class="blue">418ms</span></td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Appcelerator</td>
                     <td>3215ms</td>
                     <td>3198ms</td>
                     <td>3180ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>React Native</td>
                     <td>12358ms</td>
                     <td>12464ms</td>
                     <td>12547ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Cordova</td>
                     <td>36864ms</td>
                     <td>36063ms</td>
@@ -333,37 +351,37 @@ listView.on(ListView.itemLoadingEvent, (args: ItemEventData)=> {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="no-borders">
                     <td>Native</td>
                     <td>768ms</td>
                     <td>774ms</td>
                     <td>759ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td><span class="blue">NativeScript</span></td>
                     <td><span class="blue">1135ms</span></td>
                     <td><span class="blue">1129ms</span></td>
                     <td><span class="blue">1138ms</span></td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Xamarin</td>
                     <td>3763ms</td>
                     <td>3906ms</td>
                     <td>3789ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Cordova</td>
                     <td>9655ms</td>
                     <td>9714ms</td>
                     <td>9730ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>React Native</td>
                     <td>47873ms</td>
                     <td>47695ms</td>
                     <td>47859ms</td>
                 </tr>
-                <tr>
+                <tr class="no-borders">
                     <td>Appcelerator</td>
                     <td>50091ms</td>
                     <td>45149ms</td>

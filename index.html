@@ -24,24 +24,26 @@
 </head>
 <body>
 <div class="reveal">
-    <div class="slides">
-        <section data-background="images/angular_native.png">
-        </section>
+    <div class='footer'>
+        <div id="footer" style="background: #012128;">
+            <img width="240" height="100" src="images/white_logo.png" alt=""
+                 class="noborder vertical-block">
+        </div>
+    </div>
 
+    <div class="slides">
         <section>
-            <h1><span class="warning eng">Angular Native</span></h1>
+            <img width="180" height="48" data-src="images/logo.png" alt=""
+                 class="noborder vertical-block custom-title">
+            <img width="800" height="500" data-src="images/angular_native.png" alt=""
+                 class="noborder vertical-block">
             <h3>A couple of words about something "new"...</h3>
             <p>
                 <span class="green">Yuriy Luchaninov / </span><a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
             </p>
-            <p>
-                <a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a>
-            </p>
-            <img width="180" height="48" data-src="images/logo.png" alt=""
-                 class="noborder vertical-block">
         </section>
         <section>
-            <h2><span class="notify">...and about real life</span></h2>
+            <h2><span>...and about real life</span></h2>
         </section>
 
         <!--что это-->
@@ -87,13 +89,13 @@
         <section>
             <h3>How does it work?</h3>
             <div style="position:relative; height: 750px">
-                <img width="700" height="540"
+                <img width="800" height="600"
                      data-fragment-index="0"
-                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; top: -50px"
                      data-src="images/ios-os.svg" alt="" class="fragment fade-in noborder">
-                <img width="700" height="540"
+                <img width="800" height="600"
                      data-fragment-index="0"
-                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;"
+                     style="position:absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; top: -50px"
                      data-src="images/android-os.svg" alt="" class="fragment fade-out noborder">
             </div>
         </section>
@@ -187,6 +189,7 @@ listView.on(ListView.itemLoadingEvent,
         <section>
             <h3>Launch time</h3>
             <div class="green">Blank app with a single button.</div>
+            <br>
             <table>
                 <thead>
                 <tr>
@@ -234,6 +237,7 @@ listView.on(ListView.itemLoadingEvent,
             <h3>Primitives</h3>
             <div class="green">Marshaling between JavaScript and native part.
                 The data is presented for 1 000 000 native code calls.</div>
+            <br>
             <table>
                 <thead>
                 <tr>
@@ -287,6 +291,7 @@ listView.on(ListView.itemLoadingEvent,
             <h3>Strings</h3>
             <div class="green">Marshaling between JavaScript and native part.
                 The data is presented for 1 000 000 native code calls.</div>
+            <br>
             <table>
                 <thead>
                 <tr>
@@ -339,8 +344,9 @@ listView.on(ListView.itemLoadingEvent,
         <section>
             <h3>Big Data</h3>
             <div class="green">Marshaling of an array of 65 536 elements between
-                JavaScript and native part. The data is presented for 200 native code calls.
+                JavaScript and native part.
             </div>
+            <br>
             <table>
                 <thead>
                 <tr>
@@ -592,8 +598,22 @@ listView.on(ListView.itemLoadingEvent,
             </ul>
         </section>
         <section>
-            <h2><span class="blue">Thank you for your attention.</span></h2>
-            <h2><span class="blue">Any questions?</span></h2>
+            <h2><span>Thank you for your attention.</span></h2>
+            <h2><span>Any questions?</span></h2>
+            <br>
+            <img width="300" height="90" data-src="images/logo.png" alt=""
+                 class="noborder vertical-block">
+            <p>
+            <div>
+                <span class="green">Yuriy Luchaninov</span>
+            </div>
+            <div>
+                <a href="mailto:y.luchaninov@mobidev.biz" target="_top">y.luchaninov@mobidev.biz</a>
+            </div>
+            <div>
+                <a href="https://mobidev.biz/" class="eng">mobidev.biz</a>
+            </div>
+            </p>
         </section>
 
     </div>
@@ -619,6 +639,21 @@ listView.on(ListView.itemLoadingEvent,
             }
         ]
     });
+</script>
+
+<script>
+    (function () {
+        var footer = document.querySelector('#footer');
+
+        // displayed upon load, hides when slide changes
+        Reveal.addEventListener('slidechanged', function (event) {
+            if (event.indexh !== 0 && event.indexh !== 42) {
+                footer.style.display = 'inline-block';
+            } else {
+                footer.style.display = 'none';
+            }
+        });
+    })();
 </script>
 </body>
 </html>
